@@ -1,12 +1,8 @@
 import pandas as pd
-import numpy as np
-import os
 import datetime
 import string
 import platform
 import pymysql
-import PyInquirer
-from examples import custom_style_1
 import random
 from tabulate import tabulate
 
