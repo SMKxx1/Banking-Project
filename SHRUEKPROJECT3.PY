@@ -1,6 +1,5 @@
 import pandas as pd
 import datetime
-import string
 import platform
 import pymysql
 import random
