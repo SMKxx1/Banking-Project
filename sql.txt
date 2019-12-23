@@ -1,0 +1,50 @@
+account Table Structure:
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| accno      | bigint(20)  | NO   | PRI | NULL    |       |
+| name       | varchar(45) | YES  |     | NULL    |       |
+| age        | int(11)     | YES  |     | NULL    |       |
+| occupation | varchar(45) | YES  |     | NULL    |       |
+| address    | varchar(45) | YES  |     | NULL    |       |
+| mobileno   | bigint(20)  | YES  |     | NULL    |       |
+| aadhrano   | bigint(20)  | YES  |     | NULL    |       |
+| amt        | int(11)     | YES  |     | NULL    |       |
+| acctype    | varchar(45) | YES  |     | NULL    |       |
+| dt_of_open | varchar(45) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+
+Creating Command:
+CREATE TABLE `account` (
+  `accno` bigint(20) PRIMARY KEY NOT NULL,
+  `name` varchar(45),
+  `age` int(11),
+  `occupation` varchar(45),
+  `address` varchar(45),
+  `mobileno` bigint(20),
+  `aadhrano` bigint(20),
+  `amt` int(11),
+  `acctype` varchar(45),
+  `dt_of_open` varchar(45));
+
+
+transaction Table Structure:
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| accno       | bigint(20)  | YES  |     | NULL    |       |
+| tran_amt    | bigint(20)  | YES  |     | NULL    |       |
+| dt_tran     | varchar(45) | YES  |     | NULL    |       |
+| tran_type   | varchar(45) | YES  |     | NULL    |       |
+| description | varchar(45) | YES  |     | NULL    |       |
+| balance     | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+
+Creating Command:
+CREATE TABLE `transaction` (
+  `accno` bigint(20),
+  `tran_amt` bigint(20),
+  `dt_tran` varchar(45),
+  `tran_type` varchar(45),
+  `description` varchar(45),
+  `balance` int(11));

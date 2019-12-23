@@ -1,0 +1,150 @@
+:Python:
+
+================================
+   Banking Transaction System    
+================================
+1 : Add customer
+2 : View customer details
+3 : Deposit / Withdrawal of money
+4 : Bank statement of a customer
+5 : Bank statement of a customer between two dates
+6 : Modify address or phone number of customer
+enter your choice: 1
+enter the customer name: test_user
+enter age of customer: 22
+enter the customer occupation: business  
+enter address of the customer: house_street_area_city_state_pincode
+enter mobile number: 123456789
+enter the aadhar number: 987654321
+enter the deposit amount: 190000
+enter the account type[s/c]: s
+Your account is created and 951453196 is your account number
+
+================================
+   Banking Transaction System
+================================
+1 : Add customer
+2 : View customer details
+3 : Deposit / Withdrawal of money
+4 : Bank statement of a customer
+5 : Bank statement of a customer between two dates
+6 : Modify address or phone number of customer
+enter your choice: 2
+enter account no: 951453196
+╒═══════════╤═══════════╤═══════╤══════════════╤══════════════════════════════════════╤════════════╤════════════╤════════╤═══════════╤══════════════╕
+│     accno │ name      │   age │ occupation   │ address                              │   mobileno │   aadhrano │    amt │ acctype   │ dt_of_open   │
+╞═══════════╪═══════════╪═══════╪══════════════╪══════════════════════════════════════╪════════════╪════════════╪════════╪═══════════╪══════════════╡
+│ 951453196 │ test_user │    22 │ business     │ house_street_area_city_state_pincode │  123456789 │  987654321 │ 190000 │ savings   │ 2019-12-23   │
+╘═══════════╧═══════════╧═══════╧══════════════╧══════════════════════════════════════╧════════════╧════════════╧════════╧═══════════╧══════════════╛
+
+================================
+   Banking Transaction System
+================================
+1 : Add customer
+2 : View customer details
+3 : Deposit / Withdrawal of money
+4 : Bank statement of a customer
+5 : Bank statement of a customer between two dates
+6 : Modify address or phone number of customer
+enter your choice: 3
+date: 2019-12-23
+Please enter the account number: 951453196
+Enter the amount: 90000
+enter the transaction type [d/w]: w
+enter the transaction description: household_exp
+
+================================
+   Banking Transaction System
+================================
+1 : Add customer
+2 : View customer details
+3 : Deposit / Withdrawal of money
+4 : Bank statement of a customer
+5 : Bank statement of a customer between two dates
+6 : Modify address or phone number of customer
+enter your choice: 4
+please enter the details to view the transaction details:
+enter the accno of the customer: 951453196
+╒═══════════╤═══════════╤════════════╤════════════╤═════════════╤═══════════╤═══════════════╕
+│     accno │ name      │ dt_tran    │   tran_amt │ tran_type   │   balance │ description   │
+╞═══════════╪═══════════╪════════════╪════════════╪═════════════╪═══════════╪═══════════════╡
+│ 951453196 │ test_user │ 2019-12-23 │      90000 │ Withdraw    │    190000 │ household_exp │
+╘═══════════╧═══════════╧════════════╧════════════╧═════════════╧═══════════╧═══════════════╛
+
+================================
+   Banking Transaction System
+================================
+1 : Add customer
+2 : View customer details
+3 : Deposit / Withdrawal of money
+4 : Bank statement of a customer
+5 : Bank statement of a customer between two dates
+6 : Modify address or phone number of customer
+enter your choice: 5
+Enter the account number of the customer: 951453196
+Enter starting date [yyyy-mm-dd]: 2019-12-01
+Enter ending date [yyyy-mm-dd]: 2019-12-25
+
+
+accno 951453196
+====================================================================================================
+statements from 2019-12-01 to 2019-12-25
+====================================================================================================
+date           description                   amt              deposit/withdrawal       balance
+====================================================================================================
+2019-12-23    household_exp                 90000               household_exp           190000
+====================================================================================================
+                                                                     available balance= 190000
+
+================================
+   Banking Transaction System
+================================
+1 : Add customer
+2 : View customer details
+3 : Deposit / Withdrawal of money
+4 : Bank statement of a customer
+5 : Bank statement of a customer between two dates
+6 : Modify address or phone number of customer
+enter your choice: 6
+Enter the account no: 951453196
+Select the option to update:
+1. address
+2. mobile
+Enter the choice: 1
+enter the new address: some_random_address
+
+================================
+   Banking Transaction System
+================================
+1 : Add customer
+2 : View customer details
+3 : Deposit / Withdrawal of money
+4 : Bank statement of a customer
+5 : Bank statement of a customer between two dates
+6 : Modify address or phone number of customer
+enter your choice: 6
+Enter the account no: 951453196
+Select the option to update:
+1. address
+2. mobile
+Enter the choice: 2
+enter new mobile no: 192837465
+
+
+:MYSQL:
+
+mysql> select * from account;
++-------------+-----------+------+--------------+---------------------+-------------+-----------+---------+---------+------------+
+| accno       | name      | age  | occupation   | address             | mobileno    | aadhrano  | amt     | acctype | dt_of_open |
++-------------+-----------+------+--------------+---------------------+-------------+-----------+---------+---------+------------+
+|   951453196 | test_user |   22 | business     | some_random_address |   192837465 | 987654321 |  190000 | savings | 2019-12-23 |
++-------------+-----------+------+--------------+---------------------+-------------+-----------+---------+---------+------------+
+1 rows in set (0.01 sec)
+
+mysql> select * from transaction;
++-------------+----------+------------+-----------+---------------+---------+
+| accno       | tran_amt | dt_tran    | tran_type | description   | balance |
++-------------+----------+------------+-----------+---------------+---------+
+|   951453196 |    90000 | 2019-12-23 | Withdraw  | household_exp |  190000 |
++-------------+----------+------------+-----------+---------------+---------+
+1 rows in set (0.00 sec)
