@@ -193,6 +193,7 @@ def runAgain():
 
 def graph():
     import matplotlib.pyplot as plt
+
     df = pd.read_sql("SELECT * FROM transaction;", conn)
     plt.bar(df['dt_tran'], df['tran_amt'], width=0.35)
     plt.xlabel("Date")
@@ -200,6 +201,16 @@ def graph():
     plt.title("Transactions")
     plt.grid(which="major",linestyle="-",linewidth="0.5",color="grey")
     plt.grid(b=True,which="minor",linestyle=":",linewidth="0.5",color ="black")
+    plt.show()
+
+    df = pd.read_sql("SELECT * FROM transaction;", conn)
+    plt.plot(df['dt_tran'], df['tran_amt'], marker = 'o')
+    plt.xlabel("Date")
+    plt.ylabel("Amount")
+    plt.title("Transactions")
+    plt.grid(which="major",linestyle="-",linewidth="0.5",color="grey")
+    plt.grid(b=True,which="minor",linestyle=":",linewidth="0.5",color ="black")
+    plt.minorticks_on()
     plt.show()
 
 def MenuSet():
