@@ -4,6 +4,7 @@ import platform
 import pymysql
 import random
 from tabulate import tabulate
+import os
 
 conn = pymysql.connect(
     host="localhost",
@@ -101,7 +102,7 @@ def Daily_transaction():
     if tran_type.upper() == 'D':
         #creating new balance amount by adding current deposit amt
         tran_type = "Deposit"
-        query = f"update account set amt = amt + {tamount} where accno = {taccno};"
+        query = f"UPDATE account set amt = amt + {tamount} where accno = {taccno};"
         c.execute(query)
         conn.commit()        
         #using exceptions for validation
@@ -115,7 +116,8 @@ def Daily_transaction():
             print("\n transaction didn't succeed")  #error message
     elif tran_type.upper()=='W':
         #creating new balance amount by subtracting current withdrawal amount
-        query=f"update account set amt = amt + {tamount} where accno={taccno};"
+        query=f"UPDATE account set amt = amt - {tamount} where accno={taccno};"
+        c.execute(query)
         tran_type = "Withdraw"
         #convert list L into a tuple
         #using exceptions for validations
@@ -189,6 +191,17 @@ def runAgain():
 
 #function to display the main menu
 
+def graph():
+    import matplotlib.pyplot as plt
+    df = pd.read_sql("SELECT * FROM transaction;", conn)
+    plt.bar(df['dt_tran'], df['tran_amt'], width=0.35)
+    plt.xlabel("Date")
+    plt.ylabel("Amount")
+    plt.title("Transactions")
+    plt.grid(which="major",linestyle="-",linewidth="0.5",color="grey")
+    plt.grid(b=True,which="minor",linestyle=":",linewidth="0.5",color ="black")
+    plt.show()
+
 def MenuSet():
     try:
         opt=''
@@ -202,6 +215,7 @@ def MenuSet():
         print("4 : Bank statement of a customer")
         print("5 : Bank statement of a customer between two dates")
         print("6 : Modify address or phone number of customer ")
+        print("7 : Print Graph")
         opt=int(input("enter your choice: "))
         if opt==1:
             New_customer_entry()
@@ -215,6 +229,8 @@ def MenuSet():
             account_statement_datewise()
         elif opt==6:
             modify_account()
+        elif opt==7:
+            graph()
         else:
             print("invalid inputs.bye")
     except ValueError:
